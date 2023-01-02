@@ -1,23 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+
+function GetGenre() {
+  const [responseText, setResponseText] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleClick = () => {
+    setIsLoading(true);
+
+    // Make the API call
+    fetch('https://binaryjazz.us/wp-json/genrenator/v1/genre/')
+      .then((response) => response.text())
+      .then((text) => {
+        setResponseText(text);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err);
+        setIsLoading(false);
+      });
+  };
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div>
+      <button onClick={handleClick}>Click me</button>
+      <br />
+      Response text: {responseText}
+    </div>
+  );
+}
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GetGenre/>
     </div>
   );
 }
