@@ -84,7 +84,7 @@ function WikipediaSearch() {
           value={query}
           onChange={event => setQuery(event.target.value)}
         />
-        <button type="submit">Search</button>
+        <button className="search" type="submit">Search</button>
       </form>
       {isLoading ? (
         <p>Loading...</p>
@@ -104,7 +104,7 @@ function WikipediaSearch() {
 
 function App() {
   return (
-    <div className="App">
+    <div className="App gradient">
       <h1>Find a new genre</h1>
       <About/>
       <GetGenre/>

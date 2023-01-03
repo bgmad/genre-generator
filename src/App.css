@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 0 20%;
 }
 
 button {
@@ -9,6 +10,10 @@ button {
   border-radius: 10px; 
   padding: 10px 20px;
   cursor: pointer;
+}
+
+button.search {
+  padding: 5px 10px;
 }
 
 button:hover,
@@ -48,23 +53,29 @@ div.loading span {
   position: relative;
 }
 
-.about.closed {
-  /* Other styles for .closed go here */
+.about {
   position: relative;
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.about.closed {
+  /* Other styles for .closed go here */
   overflow: hidden;
 }
+
+.about.open {
+  overflow:hidden;
+}
+
 
 .about.closed::before {
   content: '';
   position: absolute;
-  top: 50%;
+  top: 20%;
   left: 0;
   right: 0;
   bottom: 0;
   background: linear-gradient(to top, white, transparent);
 }
-
-

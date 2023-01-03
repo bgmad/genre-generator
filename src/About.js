@@ -1,40 +1,21 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
-const ABOUT_TEXT = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-ornare erat eu ipsum pretium, at consectetur dolor varius. Ut sit amet
-vehicula massa, ac porttitor leo. Ut id dapibus nulla. Curabitur
-placerat, ipsum sit amet vehicula ultricies, est purus laoreet quam,
-ut luctus enim diam ac neque.`;
+const markdown = `_Random Genre_ pulls a randomly generated genre based on [Every Noise At once]('https://everynoise.com/everynoise1d.cgi?scope=deep%20only&vector=popularity') which is the database that Spotify uses to inform their genres and playlists. More information can be found at [Binary Jazz]('https://binaryjazz.us/genrenator-api/'). For the most part, this will generate a completely random, perhaps new, genre of music. Bellow is a search feature using [Media Wiki]('https://www.mediawiki.org/wiki/API:Search'), however, their search as extensive and complex, and the implementation might be wrong.`;
 
 function About() {
   const pRef = useRef(null);
   const [isFullTextVisible, setIsFullTextVisible] = useState(false);
-  const [originalText, setOriginalText] = useState(ABOUT_TEXT);
-
-  useEffect(() => {
-    const p = pRef.current;
-
-    if (!originalText) {
-      setOriginalText(p.textContent);
-    }
-
-    if (p.textContent.length > 100 && !isFullTextVisible) {
-      p.textContent = p.textContent.substring(0, 120) + '...';
-    } else if (isFullTextVisible) {
-      p.textContent = originalText;
-    }
-  }, [isFullTextVisible, originalText]);
 
   function handleClick() {
-    setIsFullTextVisible(!isFullTextVisible);
+    if (markdown.length > 120)
+      setIsFullTextVisible(!isFullTextVisible);
   }
 
   return (
     <div className='about-container'>
         <div className={`about ${isFullTextVisible ? 'open' : 'closed'}`} ref={pRef} onClick={handleClick}>
-            <p>
-            {ABOUT_TEXT}
-            </p>
+            {isFullTextVisible ? <ReactMarkdown children={markdown} /> : <ReactMarkdown children={markdown.substring(0, 200)}/>}
         </div>
     </div>
   );
