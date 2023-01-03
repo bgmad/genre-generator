@@ -4,6 +4,7 @@
 }
 
 button {
+  font: black;
   font-size: 1rem;
   background-color: rgb(167, 104, 128);
   border: medium rgb(41, 41, 47) solid;
@@ -13,6 +14,7 @@ button {
 }
 
 button.search {
+  font: black;
   padding: 5px 10px;
 }
 
@@ -20,6 +22,10 @@ button:hover,
 button:active {
   background-color: rgb(103, 70, 73);
   box-shadow: inset 0 0 0 2px rgb(138, 85, 85);
+}
+
+button::after {
+  background-color: rgb(167, 104, 128);
 }
 
 div.loading {
