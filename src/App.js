@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import './App.css'
 
 function GetGenre() {
   const [responseText, setResponseText] = useState('');
@@ -26,22 +27,25 @@ function GetGenre() {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className='loading'>
+      <span>Loading...</span>
+    </div>;
   }
 
   return (
     <div>
-      <button onClick={handleClick}>Click me</button>
-      <br />
-      Response text: {responseText}
+      <button onClick={handleClick}>Generate</button>
+      <p>
+        {responseText}
+      </p>
     </div>
   );
 }
 
-
 function App() {
   return (
     <div className="App">
+      <h1>Find a new genre</h1>
       <GetGenre/>
     </div>
   );
