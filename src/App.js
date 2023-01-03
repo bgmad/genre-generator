@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css'
 import $ from 'jquery';
+import MyComponent from './MyComponent';
 
 function GetGenre() {
   const [responseText, setResponseText] = useState('');
@@ -105,6 +106,7 @@ function App() {
   return (
     <div className="App">
       <h1>Find a new genre</h1>
+      <MyComponent/>
       <GetGenre/>
       <WikipediaSearch />
     </div>
