@@ -6,7 +6,7 @@ vehicula massa, ac porttitor leo. Ut id dapibus nulla. Curabitur
 placerat, ipsum sit amet vehicula ultricies, est purus laoreet quam,
 ut luctus enim diam ac neque.`;
 
-function MyComponent() {
+function About() {
   const pRef = useRef(null);
   const [isFullTextVisible, setIsFullTextVisible] = useState(false);
   const [originalText, setOriginalText] = useState(ABOUT_TEXT);
@@ -31,11 +31,13 @@ function MyComponent() {
 
   return (
     <div className='about-container'>
-        <p className={`about ${isFullTextVisible ? 'open' : 'closed'}`} ref={pRef} onClick={handleClick}>
-        {ABOUT_TEXT}
-        </p>
+        <div className={`about ${isFullTextVisible ? 'open' : 'closed'}`} ref={pRef} onClick={handleClick}>
+            <p>
+            {ABOUT_TEXT}
+            </p>
+        </div>
     </div>
   );
 }
 
-export default MyComponent;
+export default About;
